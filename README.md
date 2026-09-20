@@ -1,6 +1,6 @@
 # BreastDiagAI
 
-Breast cancer survival prediction .
+Breast cancer  prediction .
 
 ## Notre histoire
 Ce projet est né d'une expérience personnelle : la découverte d'une anomalie mammaire chez la mère d'un membre de l'équipe, et le parcours médical long et angoissant qui a suivi (mammographie, échographie, biopsie...).
