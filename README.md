@@ -1,6 +1,6 @@
 # BreastDiagAI
 
-Breast cancer survival prediction using Random Survival Forest.
+Breast cancer survival prediction .
 
 ## Notre histoire
 Ce projet est né d'une expérience personnelle : la découverte d'une anomalie mammaire chez la mère d'un membre de l'équipe, et le parcours médical long et angoissant qui a suivi (mammographie, échographie, biopsie...).
@@ -15,6 +15,7 @@ Prédire le diagnostic (bénin/malin) du cancer du sein à partir de données m�
 ## Dataset
 Source : [Kaggle - Breast Cancer Dataset](https://www.kaggle.com/datasets/sharmajicoder/breast-cancer-dataset)
 Taille : 500 000 observations
+
 Voir `data/raw/README.md` pour les instructions de téléchargement.
 
 ## Structure du projet
@@ -23,7 +24,7 @@ Voir `data/raw/README.md` pour les instructions de téléchargement.
 - `results/` : résultats, graphiques, modèle entraîné
 
 ## Équipe — Groupe IASD29
-- IASD29 (Chef d'équipe)
+- IASD29 
 - IASD08
 - IASD19
 - IASD24
