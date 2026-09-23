@@ -1,0 +1,69 @@
+23:35:36 | INFO     | Chargement de breast_cancer_40_features_1M.csv ...
+23:35:38 | INFO     | Chargement terminé : 500,000 lignes x 41 colonnes
+23:35:38 | INFO     | === AUDIT INITIAL ===
+23:35:38 | INFO     | Mémoire utilisée : 156.40 Mo
+23:35:38 | INFO     | Types de données :
+float64    40
+int64       1
+23:35:38 | INFO     | === VALEURS MANQUANTES ===
+23:35:38 | INFO     | Aucune valeur manquante détectée.
+23:35:38 | INFO     | === DOUBLONS ===
+23:35:40 | INFO     | Aucun doublon détecté.
+23:35:40 | INFO     | === DÉTECTION DES OUTLIERS ===
+23:35:40 | INFO     | Résumé des outliers :
+                  colonne  outliers_IQR  %_IQR  outliers_Zscore(>4)
+               area_worst          8894   1.78                  852
+                area_mean          6612   1.32                  449
+           perimeter_mean          3990   0.80                   82
+             concavity_se          3599   0.72                   22
+          smoothness_mean          3592   0.72                   25
+           cell_variation          3588   0.72                   27
+     concave_points_worst          3566   0.71                   33
+            texture_worst          3553   0.71                   31
+             texture_mean          3547   0.71                   14
+             nucleus_size          3543   0.71                   17
+        nuclear_variation          3538   0.71                   31
+          perimeter_worst          3529   0.71                   31
+        chromatin_density          3527   0.71                   34
+            smoothness_se          3513   0.70                   28
+          concavity_worst          3513   0.70                   31
+  fractal_dimension_worst          3512   0.70                   32
+              symmetry_se          3507   0.70                   24
+             perimeter_se          3507   0.70                   36
+     fractal_dimension_se          3500   0.70                   35
+     cell_clump_thickness          3498   0.70                   28
+           compactness_se          3477   0.70                   29
+          cytoplasm_ratio          3476   0.70                   34
+                  area_se          3475   0.70                   33
+        compactness_worst          3472   0.69                   26
+      concave_points_mean          3470   0.69                   24
+               texture_se          3469   0.69                   30
+        concave_points_se          3461   0.69                   33
+           symmetry_worst          3456   0.69                   32
+             cell_density          3456   0.69                   13
+   fractal_dimension_mean          3455   0.69                   30
+         compactness_mean          3453   0.69                   31
+                radius_se          3452   0.69                   22
+           concavity_mean          3451   0.69                   40
+              radius_mean          3434   0.69                   33
+          nucleus_texture          3426   0.69                   39
+            symmetry_mean          3425   0.68                   26
+             radius_worst          3372   0.67                   33
+         smoothness_worst          3355   0.67                   23
+             mitosis_rate          1772   0.35                   25
+tumor_border_irregularity          1701   0.34                   17
+23:35:40 | INFO     | === CORRÉLATIONS FORTES ENTRE FEATURES (redondance) ===
+23:35:43 | INFO     |   radius_mean  <->  area_mean : corrélation = 0.989
+23:35:43 | INFO     |   radius_mean  <->  radius_worst : corrélation = 0.952
+23:35:43 | INFO     | -> Ces paires sont redondantes : envisager d'en retirer une par paire avant l'entraînement.
+23:35:43 | INFO     | === ÉQUILIBRE DES CLASSES (diagnosis) ===
+23:35:43 | INFO     | 
+            count     %
+diagnosis              
+0          325000  65.0
+1          175000  35.0
+23:35:43 | INFO     | Déséquilibre modéré détecté (ratio 1.86). Pense à utiliser class_weight='balanced' ou du sur/sous-échantillonnage lors de l'entraînement.
+23:35:43 | INFO     | === OPTIMISATION MÉMOIRE ===
+23:35:43 | INFO     | Mémoire avant : 156.40 Mo -> après : 76.77 Mo (-50.9%)
+23:35:55 | INFO     | === TERMINÉ === Fichier nettoyé exporté : breast_cancer_cleaned.csv
+23:35:55 | INFO     | Rapport détaillé disponible dans : cleaning_report.log
