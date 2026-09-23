@@ -18,7 +18,7 @@ breast_cancer_40_features_1M.csv :
 Usage :
     python clean_data.py --input "chemin/vers/breast_cancer_40_features_1M.csv"
 
-Auteur : Groupe IASD29 — Projet BreastDiagAI
+
 """
 
 import argparse
