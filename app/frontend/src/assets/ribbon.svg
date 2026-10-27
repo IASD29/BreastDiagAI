@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F9A8D4"/>
+      <stop offset="100%" stop-color="#BE185D"/>
+    </linearGradient>
+  </defs>
+  <!-- Ruban : boucle gauche -->
+  <path d="M24 14 C18 8, 8 10, 8 20 C8 28, 18 30, 24 26" stroke="url(#g1)" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+  <!-- Ruban : boucle droite -->
+  <path d="M24 14 C30 8, 40 10, 40 20 C40 28, 30 30, 24 26" stroke="url(#g1)" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+  <!-- Ruban : queue gauche -->
+  <path d="M24 26 L16 40" stroke="url(#g1)" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <!-- Ruban : queue droite -->
+  <path d="M24 26 L32 40" stroke="url(#g1)" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <!-- Nœud central -->
+  <circle cx="24" cy="26" r="3.5" fill="#BE185D"/>
+</svg>

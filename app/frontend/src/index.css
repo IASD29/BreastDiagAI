@@ -1,0 +1,331 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Variables CSS de Thème Centralisées ───────────────── */
+:root {
+  --bg: #fdf8fa;
+  --surface: #ffffff;
+  --surface-2: #f6ecf4;
+  --surface-3: #eee2eb;
+  --text: #1a1020;
+  --text-muted: #6b5c73;
+  --text-dim: #9987a0;
+  --border: #eadbea;
+  --border-subtle: #f4eaf3;
+  
+  --primary: #be185d;
+  --primary-hover: #9d174d;
+  --primary-light: #fce7f3;
+  --primary-text: #9d174d;
+  --primary-border: #fbcfe8;
+
+  --success: #059669;
+  --success-bg: #ecfdf5;
+  --success-border: #a7f3d0;
+  --success-text: #065f46;
+
+  --danger: #dc2626;
+  --danger-bg: #fef2f2;
+  --danger-border: #fecaca;
+  --danger-text: #991b1b;
+
+  --info: #0284c7;
+  --info-bg: #f0f9ff;
+  --info-border: #bae6fd;
+  --info-text: #0369a1;
+
+  --shadow: 0 4px 20px -2px rgba(190, 24, 93, 0.06), 0 2px 6px -2px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 10px 25px -3px rgba(190, 24, 93, 0.1), 0 4px 10px -2px rgba(0, 0, 0, 0.04);
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(234, 219, 234, 0.8);
+  --sidebar-bg: #4a0429;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+
+  color-scheme: light;
+}
+
+[data-theme="dark"],
+.dark {
+  --bg: #0f0a12;
+  --surface: #1a1320;
+  --surface-2: #241a2c;
+  --surface-3: #30233b;
+  --text: #f5f0f7;
+  --text-muted: #b8a9c0;
+  --text-dim: #7f6e87;
+  --border: #33243d;
+  --border-subtle: #241a2c;
+
+  --primary: #f472b6;
+  --primary-hover: #fb7185;
+  --primary-light: rgba(244, 114, 182, 0.15);
+  --primary-text: #fbcfe8;
+  --primary-border: rgba(244, 114, 182, 0.35);
+
+  --success: #34d399;
+  --success-bg: rgba(16, 185, 129, 0.14);
+  --success-border: rgba(16, 185, 129, 0.35);
+  --success-text: #6ee7b7;
+
+  --danger: #f87171;
+  --danger-bg: rgba(239, 68, 68, 0.14);
+  --danger-border: rgba(239, 68, 68, 0.35);
+  --danger-text: #fca5a5;
+
+  --info: #38bdf8;
+  --info-bg: rgba(56, 189, 248, 0.14);
+  --info-border: rgba(56, 189, 248, 0.35);
+  --info-text: #7dd3fc;
+
+  --shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.55), 0 2px 6px -2px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.7), 0 4px 10px -2px rgba(0, 0, 0, 0.5);
+  --glass-bg: rgba(26, 19, 32, 0.85);
+  --glass-border: rgba(51, 36, 61, 0.8);
+  --sidebar-bg: #150e1b;
+  --sidebar-border: rgba(255, 255, 255, 0.05);
+
+  color-scheme: dark;
+}
+
+/* ─── Styles de Base ────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--bg);
+    color: var(--text);
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    letter-spacing: -0.01em;
+    min-height: 100vh;
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  }
+
+  /* Scrollbar fine */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+  }
+}
+
+/* ─── Keyframes Motion Design & Boutons ───────────────────── */
+@keyframes btn-shine {
+  0% {
+    left: -120%;
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.85;
+  }
+  100% {
+    left: 220%;
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(219, 39, 119, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(219, 39, 119, 0);
+  }
+}
+
+@keyframes float-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes icon-draw {
+  0% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes spin-smooth {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ─── Utilitaires Motion & Effet Shine ────────────────────── */
+.btn-motion-spring {
+  transition: transform 0.24s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.24s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background 0.3s ease,
+              border-color 0.2s ease,
+              color 0.2s ease,
+              opacity 0.2s ease;
+}
+
+.btn-shine-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 20%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0.08) 80%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  pointer-events: none;
+}
+
+.btn-shine-container:hover .btn-shine-effect::before {
+  animation: btn-shine 0.75s ease-out;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+.animate-float-subtle {
+  animation: float-subtle 3s ease-in-out infinite;
+}
+
+.animate-spin-smooth {
+  animation: spin-smooth 0.8s linear infinite;
+}
+
+/* ─── Respect de prefers-reduced-motion ───────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .btn-shine-effect::before {
+    display: none !important;
+  }
+  .btn-motion-spring {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* ─── Classes Utilitaires Thème ──────────────────────────── */
+@layer components {
+  .card {
+    background-color: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+  }
+
+  .glass {
+    background-color: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: var(--text);
+  }
+
+  .btn-brand {
+    background: linear-gradient(135deg, #be185d 0%, #db2777 50%, #ec4899 100%);
+    background-size: 200% 200%;
+    color: #ffffff;
+    border-radius: 0.875rem;
+    font-weight: 600;
+    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 4px 14px 0 rgba(190, 24, 93, 0.25);
+  }
+  .btn-brand:hover {
+    background-position: right center;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px -4px rgba(219, 39, 119, 0.45);
+  }
+  .btn-brand:active {
+    transform: translateY(1px) scale(0.96);
+  }
+
+  [data-theme="dark"] .btn-brand {
+    background: linear-gradient(135deg, #db2777 0%, #ec4899 50%, #f472b6 100%);
+    background-size: 200% 200%;
+    color: #0f0a12;
+    box-shadow: 0 4px 18px 0 rgba(244, 114, 182, 0.3);
+  }
+  [data-theme="dark"] .btn-brand:hover {
+    box-shadow: 0 8px 28px -2px rgba(244, 114, 182, 0.5);
+  }
+
+  .badge-benign {
+    background-color: var(--success-bg);
+    color: var(--success-text);
+    border: 1px solid var(--success-border);
+  }
+
+  .badge-malignant {
+    background-color: var(--danger-bg);
+    color: var(--danger-text);
+    border: 1px solid var(--danger-border);
+  }
+
+  /* ─── Champs de saisie thématisés ────────────────────────── */
+  .input-field {
+    width: 100%;
+    padding: 0.625rem 0.875rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border);
+    background-color: var(--surface);
+    color: var(--text);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .input-field::placeholder {
+    color: var(--text-dim);
+  }
+  .input-field:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-light);
+    outline: none;
+  }
+  .input-field:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    background-color: var(--surface-2);
+  }
+}
