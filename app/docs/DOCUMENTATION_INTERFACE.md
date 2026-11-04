@@ -156,7 +156,7 @@ L'application utilise un routage par état React (`activeTab` dans `App.jsx`) pe
 ### 4.3 Page Notre Histoire (`OurStory.jsx` — `activeTab = 'story'`)
 - **Rôle :** Rendre hommage à la genèse du projet et affirmer la vocation bienveillante et éthique de l'outil.
 - **Éléments visibles :**
-  - Récit du diagnostic vécu par la mère d'Attig Rania, membre de l'équipe.
+  - Récit du diagnostic vécu par la mère d'un membre de l'équipe .
   - Illustration du ruban rose solidaire.
   - Composant dédié d'hommage : `DedicationCard`.
   - Charte d'engagement éthique : l'IA comme un phare bienveillant et non un verdict froid.
