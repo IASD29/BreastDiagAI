@@ -36,8 +36,39 @@ BreastDiagAI
 ├── data/                 Informations sur le dataset (non inclus, trop volumineux)
 ├── notebooks/            Notebooks d'entraînement et d'analyse
 ├── results/              Résultats, graphiques, modèle entraîné
-├── src/                  Scripts (nettoyage, EDA)
+│   ├── cleaning/         Rapports de nettoyage
+│   └── eda/              Visualisations et statistiques EDA
+├── src/                  Scripts (nettoyage, EDA, prétraitement)
+│   ├── clean_data.py
+│   ├── exploratory_analysis.py
+│   └── preprocessing.py
+├── requirements.txt      Dépendances du pipeline de Data Science / ML
 └── README.md
+```
+
+## ⚙️ Pipeline de Prétraitement des Données (`src/preprocessing.py`)
+
+Le script `src/preprocessing.py` standardise et automatise les étapes de prétraitement pour alimenter les modèles d'apprentissage :
+
+1. **Séparation X / y** : Extraction de la variable cible `diagnosis` et conservation intégrale des 40 variables explicatives numériques (conformément aux conclusions de l'EDA).
+2. **Train / Test Split stratifié (80 / 20)** : Stratification stricte sur `y` (`random_state=42`) garantissant la parité de répartition 65% bénin (0) / 35% malin (1).
+3. **Imputation préventive** : `SimpleImputer(strategy='median')` pour prémunir le pipeline contre les valeurs manquantes.
+4. **Encodage** : `LabelEncoder` pour la variable cible `y` ; `OneHotEncoder` conditionnel pour toute colonne catégorielle.
+5. **Normalisation robuste (`RobustScaler`)** : Retenu face à `StandardScaler` et `MinMaxScaler` pour sa résilience aux valeurs aberrantes avérées (jusqu'à 1.78% d'outliers sur `area_worst`) grâce à l'utilisation de la médiane et de l'IQR.
+6. **Pipeline scikit-learn & ColumnTransformer** : Ajustement (`fit`) strictement confiné au sous-ensemble **TRAIN** (aucun risque de *Data Leakage*), puis transformation (`transform`) sur **TRAIN** et **TEST**.
+7. **Export des artéfacts** :
+   - Fichiers générés : `X_train.csv`, `X_test.csv`, `y_train.csv`, `y_test.csv` (non versionnés sur Git en raison de leur volume)
+   - Modèle de préprocessing sérialisé : `preprocessor.joblib`
+   - Rapport d'exécution détaillé : `preprocessing.log`
+
+### Exécution du prétraitement
+
+```bash
+# Installation des dépendances
+pip install -r requirements.txt
+
+# Exécution du script
+python src/preprocessing.py --input breast_cancer_cleaned.csv --output-dir .
 ```
 
 ## Application web
@@ -97,15 +128,26 @@ Application : http://localhost:5173
 
 ## Entraîner le modèle
 
-1. Installer les dépendances
+1. Installer les dépendances :
+   ```bash
+   pip install -r requirements.txt
+   ```
 2. Télécharger le dataset (voir `data/raw/README.md`)
-3. Ouvrir et exécuter `notebooks/training.ipynb`
+3. Nettoyer les données :
+   ```bash
+   python src/clean_data.py --input data/raw/breast_cancer_40_features_1M.csv
+   ```
+4. Exécuter le prétraitement :
+   ```bash
+   python src/preprocessing.py --input breast_cancer_cleaned.csv
+   ```
+5. Ouvrir et exécuter `notebooks/training.ipynb`
 
 ## Équipe : Groupe IASD29
 
 - IASD29
 - IASD08
-- IASD19
+- IASD19 (Prétraitement des données & Pipeline Scikit-Learn)
 - IASD24
 - RSD19
 
