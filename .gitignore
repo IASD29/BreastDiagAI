@@ -48,3 +48,10 @@ yarn-error.log*
 *.swo
 .DS_Store
 Thumbs.db
+
+# Caches notebooks (Antigravity) et gros CSV exclus du push
+.ipynb_checkpoints/
+*.pyc
+breast_cancer_40_features_1M.csv
+breast_cancer_cleaned.csv
+pre/X_train.csv
